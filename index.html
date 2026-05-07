@@ -998,32 +998,18 @@ let akunData=[
   { user: 'Hitler', pass: 'gxxxxxx',role:'TRIALL'}, 
   { user: 'arya', pass: 'axxxxxx',role:'VIP'}
   ];
- function login(){
-
- let user = document.getElementById("luser").value.trim();
- let pass = document.getElementById("lpass").value.trim();
-
- console.log(akunData);
- console.log(user);
- console.log(pass);
-
- let cek = akunData.find(a =>
-  a.user.trim().toLowerCase() === user.toLowerCase() &&
-  a.pass.trim().toLowerCase() === pass.toLowerCase()
- );
+ // LOGIN
+function login(){
+ let u = luser.value;
+ let cek = akunData.find(a => a.user === u);
 
  if(!cek){
-  alert("Username / Password salah");
+  alert("User tidak ada");
   return;
  }
-
- loginBox.style.display="none";
- home.style.display="block";
-
- rankName.innerHTML = cek.user;
-
- setRole(cek.role);
-   }
+  // masuk
+ document.getElementById("loginBox").style.display="none";
+  }
  
 // 🔥 MUSIC PLAYER
 document.getElementById("musicFile").onchange = function(e){
