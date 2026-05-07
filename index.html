@@ -998,11 +998,12 @@ let akunData=[
   { user: 'Hitler', pass: 'gxxxxxx',role:'TRIALL'}, 
   { user: 'arya', pass: 'axxxxxx',role:'VIP'}
   ];
-// LOGIN
+
+ // LOGIN
 function login(){
 
- let user = luser.value;
- let pass = lpass.value;
+ let user = document.getElementById("luser").value.trim();
+ let pass = document.getElementById("lpass").value.trim();
 
  // cari akun
  let cek = akunData.find(a =>
@@ -1025,7 +1026,6 @@ function login(){
  // set role
  setRole(cek.role);
 }
- 
 // 🔥 MUSIC PLAYER
 document.getElementById("musicFile").onchange = function(e){
  let file = e.target.files[0];
