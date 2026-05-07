@@ -1000,16 +1000,46 @@ let akunData=[
   ];
  // LOGIN
 function login(){
+
  let u = luser.value;
+
  let cek = akunData.find(a => a.user === u);
 
  if(!cek){
   alert("User tidak ada");
   return;
  }
-  // masuk
+
+ // masuk
  document.getElementById("loginBox").style.display="none";
-  }
+
+ document.getElementById("home").style.display="block";
+
+ // tampil nama
+ document.getElementById("rankName").innerHTML = cek.user;
+
+ // tampil role
+ document.getElementById("rankRole").innerHTML =
+ cek.role + " ACCESS";
+
+ // icon role
+ if(cek.role=="OWNER"){
+  document.getElementById("rankIcon").innerHTML="👑";
+ }
+
+ else if(cek.role=="VIP"){
+  document.getElementById("rankIcon").innerHTML="💎";
+ }
+
+ else if(cek.role=="RESELLER"){
+  document.getElementById("rankIcon").innerHTML="🚀";
+ }
+
+ else{
+  document.getElementById("rankIcon").innerHTML="🙂";
+ }
+
+}
  
 // 🔥 MUSIC PLAYER
 document.getElementById("musicFile").onchange = function(e){
