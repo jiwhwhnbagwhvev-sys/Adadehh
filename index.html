@@ -998,33 +998,33 @@ let akunData=[
   { user: 'Hitler', pass: 'gxxxxxx',role:'TRIALL'}, 
   { user: 'arya', pass: 'axxxxxx',role:'VIP'}
   ];
- // LOGIN
-function login(){
+ function login(){
 
  let user = document.getElementById("luser").value.trim();
  let pass = document.getElementById("lpass").value.trim();
 
+ console.log(akunData);
+ console.log(user);
+ console.log(pass);
+
  let cek = akunData.find(a =>
-  a.user.toLowerCase().trim() === user.toLowerCase().trim() &&
-  a.pass.toLowerCase().trim() === pass.toLowerCase().trim()
-);
+  a.user.trim().toLowerCase() === user.toLowerCase() &&
+  a.pass.trim().toLowerCase() === pass.toLowerCase()
+ );
 
  if(!cek){
   alert("Username / Password salah");
   return;
  }
 
- // masuk dashboard
- document.getElementById("loginBox").style.display="none";
+ loginBox.style.display="none";
+ home.style.display="block";
 
- document.getElementById("home").style.display="block";
+ rankName.innerHTML = cek.user;
 
- // ubah nama
- document.getElementById("rankName").innerHTML = cek.user;
-
- // set role
  setRole(cek.role);
-}
+   }
+ 
 // 🔥 MUSIC PLAYER
 document.getElementById("musicFile").onchange = function(e){
  let file = e.target.files[0];
