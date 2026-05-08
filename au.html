@@ -6,6 +6,28 @@
 <title>Cyber Panel</title>
 
 <style>
+ /* WRAP */
+.video-wrap{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin-top:20px;
+}
+
+/* LED */
+.led{
+width:6px;
+height:220px;
+border-radius:30px;
+background:white;
+box-shadow:
+0 0 20px white,
+0 0 40px white,
+0 0 60px rgba(255,255,255,.8);
+opacity:.9;
+}
+
 
  /* VIDEO */
 .video-banner{
@@ -497,12 +519,16 @@ SYSTEM ACCESS
 
 </div>
 <!-- VIDEO BANNER -->
+<div class="video-wrap">
+
+<div class="led led-left"></div>
+
 <div class="video-banner">
 
-<video autoplay
-muted
+<video id="ownerVideo"
 loop
-playsinline>
+playsinline
+onclick="playVideoSound()">
 
 <source src="Owner.mp4"
 type="video/mp4">
@@ -510,6 +536,10 @@ type="video/mp4">
 </video>
 
 <div class="video-shadow"></div>
+
+</div>
+
+<div class="led led-right"></div>
 
 </div>
 <div class="card">
@@ -1033,6 +1063,16 @@ function closePopup(){
 
 }
 
+ function playVideoSound(){
+
+ let v=
+ document.getElementById("ownerVideo");
+
+ v.muted=false;
+
+ v.play();
+
+}
 </script>
 
 </body>
