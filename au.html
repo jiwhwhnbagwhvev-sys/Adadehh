@@ -740,16 +740,28 @@ function login(){
 
  }
 
- // CEK DEVICE
- if(cek.online){
+// CEK DEVICE
+let sesi=
+localStorage.getItem(
+"login_"+cek.user
+);
 
-  alert(
-  "User login di perangkat lain"
-  );
+// SUDAH LOGIN
+if(sesi=="online"){
 
-  return;
+ alert(
+ "User login di perangkat lain"
+ );
 
- }
+ return;
+
+}
+
+// SET ONLINE
+localStorage.setItem(
+"login_"+cek.user,
+"online"
+);
 
  // SET ONLINE
  cek.online=true;
@@ -1079,6 +1091,22 @@ function playVideoSound(){
  v.play();
 
 }
+
+ // AUTO LOGOUT
+window.addEventListener(
+"beforeunload",
+()=>{
+
+ akunData.forEach(a=>{
+
+  localStorage.removeItem(
+  "login_"+a.user
+  );
+
+ });
+
+});
+ 
 </script>
 
 </body>
