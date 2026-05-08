@@ -817,9 +817,18 @@ setInterval(updateSenderStatus,3600000);
 // EXECUTE
 function executePanel(){
 
+ // MASIH COOLDOWN
+ if(isCooldown){
+
+  return;
+
+ }
+
+ // OWNER
  if(currentRole!="OWNER"){
 
-  document.getElementById("popup").style.display="flex";
+  document.getElementById("popup")
+  .style.display="flex";
 
   return;
 
