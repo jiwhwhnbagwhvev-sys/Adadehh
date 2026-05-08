@@ -414,8 +414,9 @@ CYBER LOGIN
 Masuk ke dashboard
 </div>
 
-<input id="username"
-placeholder="Username">
+<input id="password"
+type="password"
+placeholder="Password">
 
 <button class="login-btn"
 onclick="login()">
@@ -651,40 +652,94 @@ updateSenderStatus();
 // LOGIN
 function login(){
 
- let u=document.getElementById("username").value;
+ let u=
+ document.getElementById("username").value;
 
- let cek=akunData.find(a=>a.user===u);
+ let p=
+ document.getElementById("password").value;
 
+ // CEK AKUN
+ let cek=
+ akunData.find(a =>
+  a.user===u &&
+  a.pass===p
+ );
+
+ // SALAH
  if(!cek){
-  alert("User tidak ada");
+
+  alert("Username / Password salah");
+
   return;
+
  }
+
+ // CEK DEVICE
+ if(cek.online){
+
+  alert(
+  "User login di perangkat lain"
+  );
+
+  return;
+
+ }
+
+ // SET ONLINE
+ cek.online=true;
 
  currentRole=cek.role;
 
- document.getElementById("loginPage").style.display="none";
- document.getElementById("home").style.display="block";
+ // MASUK
+ document.getElementById("loginPage")
+ .style.display="none";
 
- document.getElementById("userName").innerHTML=cek.user;
+ document.getElementById("home")
+ .style.display="block";
 
+ // USER
+ document.getElementById("userName")
+ .innerHTML=cek.user;
+
+ // ROLE
  if(cek.role=="OWNER"){
-  document.getElementById("avatar").innerHTML="👑";
-  document.getElementById("userRole").innerHTML="OWNER ACCESS";
+
+  document.getElementById("avatar")
+  .innerHTML="👑";
+
+  document.getElementById("userRole")
+  .innerHTML="OWNER ACCESS";
+
  }
 
  else if(cek.role=="VIP"){
-  document.getElementById("avatar").innerHTML="💎";
-  document.getElementById("userRole").innerHTML="VIP ACCESS";
+
+  document.getElementById("avatar")
+  .innerHTML="💎";
+
+  document.getElementById("userRole")
+  .innerHTML="VIP ACCESS";
+
  }
 
  else if(cek.role=="RESELLER"){
-  document.getElementById("avatar").innerHTML="🚀";
-  document.getElementById("userRole").innerHTML="RESELLER ACCESS";
+
+  document.getElementById("avatar")
+  .innerHTML="🚀";
+
+  document.getElementById("userRole")
+  .innerHTML="RESELLER ACCESS";
+
  }
 
  else{
-  document.getElementById("avatar").innerHTML="🙂";
-  document.getElementById("userRole").innerHTML="MEMBER ACCESS";
+
+  document.getElementById("avatar")
+  .innerHTML="🙂";
+
+  document.getElementById("userRole")
+  .innerHTML="MEMBER ACCESS";
+
  }
 
 }
