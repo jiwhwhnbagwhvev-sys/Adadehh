@@ -689,19 +689,36 @@ let senderType="private";
 
 let isCooldown=false;
 
-// STATUS
+// STATUS REAL TIME
 function updateSenderStatus(){
 
  let box=
  document.getElementById("senderStatus");
 
- box.className=
- "sender-status online";
+ // AMBIL WAKTU START
+ let start=
+ localStorage.getItem("senderStart");
 
- box.innerHTML=
- "🟢 Sender sedang online";
+ // BELUM ADA
+ if(!start){
 
- setTimeout(()=>{
+  start=Date.now();
+
+  localStorage.setItem(
+  "senderStart",
+  start
+  );
+
+ }
+
+ // HITUNG
+ let sekarang=Date.now();
+
+ let selisih=
+ sekarang - start;
+
+ // 1 JAM
+ if(selisih >= 3600000){
 
   box.className=
   "sender-status offline";
@@ -709,11 +726,25 @@ function updateSenderStatus(){
   box.innerHTML=
   "🔴 Sender sedang offline";
 
- },3600000);
+ }
+
+ else{
+
+  box.className=
+  "sender-status online";
+
+  box.innerHTML=
+  "🟢 Sender sedang online";
+
+ }
 
 }
 
+// UPDATE
 updateSenderStatus();
+
+// CEK TERUS
+setInterval(updateSenderStatus,1000);
  
 // LOGIN
 function login(){
