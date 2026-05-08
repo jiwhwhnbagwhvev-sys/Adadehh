@@ -16,15 +16,13 @@ border-radius:40px;
 overflow:hidden;
 
 /* LED PUTIH MELINGKAR */
-border:3px solid rgba(255,255,255,.95);
+border:3px solid rgba(255,0,0,.95);
 
 box-shadow:
-0 0 15px white,
-0 0 30px rgba(255,255,255,.9),
-0 0 50px rgba(255,255,255,.7),
-0 0 80px rgba(255,255,255,.5);
-}
-
+0 0 15px red,
+0 0 30px rgba(255,0,0,.9),
+0 0 50px rgba(255,0,0,.7),
+0 0 80px rgba(255,0,0,.5);
 /* VIDEO */
 .video-banner video{
 width:100%;
@@ -1046,16 +1044,24 @@ function closePopup(){
 
 }
 
- function playVideoSound(){
+function playVideoSound(){
 
  let v=
  document.getElementById("ownerVideo");
 
+ // BUKA MUTE
  v.muted=false;
+
+ v.volume=1;
+
+ // PLAY ULANG
+ v.pause();
+
+ v.currentTime=0;
 
  v.play();
 
-}
+ } 
 </script>
 
 </body>
