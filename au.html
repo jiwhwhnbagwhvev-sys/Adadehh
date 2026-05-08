@@ -862,6 +862,34 @@ localStorage.setItem(
  document.getElementById("loginPage")
  .style.display="none";
 
+// TAMPILKAN INTRO
+document.getElementById(
+"introVideo"
+).style.display="flex";
+
+// PLAY VIDEO
+let intro =
+document.getElementById(
+"xvVideo"
+);
+
+intro.play();
+
+// HIDE SETELAH 6 DETIK
+setTimeout(()=>{
+
+ document.getElementById(
+ "introVideo"
+ ).style.display="none";
+
+ document.getElementById(
+ "home"
+ ).style.display="block";
+
+},6000);
+
+return;
+ 
  document.getElementById("home")
  .style.display="block";
 
