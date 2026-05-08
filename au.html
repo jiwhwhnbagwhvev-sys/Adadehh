@@ -6,6 +6,23 @@
 <title>Cyber Panel</title>
 
 <style>
+/* INTRO */
+#introVideo{
+position:fixed;
+inset:0;
+background:black;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999999;
+}
+
+#introVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+ 
 /* VIDEO */
 .video-wrap{
 display:flex;
@@ -483,8 +500,31 @@ onclick="login()">
 </div>
 
 <!-- HOME -->
-<div id="home">
+<div id="home
+ 
+<!-- INTRO VIDEO -->
+<div id="introVideo">
 
+<video id="xvVideo"
+autoplay
+playsinline>
+
+<source src="xv.mp4"
+type="video/mp4">
+
+</video>
+
+<div class="intro-name">
+
+<span class="xv-red">
+XV-
+</span>
+
+<span class="owner-yellow">
+OWNER XV
+</span>
+
+</div>
 <div class="topbar">
 
 <div class="user">
