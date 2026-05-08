@@ -1046,6 +1046,12 @@ function login(){
 
  let cek = akunData.find(a => a.user === u);
 
+ // SIMPAN USER LOGIN
+localStorage.setItem(
+"currentUser",
+cek.user
+);
+ 
  if(!cek){
   alert("User tidak ada");
   return;
@@ -1130,6 +1136,14 @@ function sensor(p){
  return p ? p[0] + "xxxx" : "";
 }
 
+<div class="card">
+
+<h3>🟢 MEMBER ONLINE</h3>
+
+<div id="onlineMembers"></div>
+
+</div>
+ 
 // 🔍 RENDER AKUN
 function renderAkun(){
  let s = document.getElementById("search").value.toLowerCase();
@@ -1283,6 +1297,73 @@ rankBox.className="rank member";
 rankIcon.innerHTML="🙂";
 rankRole.innerHTML="MEMBER ACCESS";
 }
+
+ // AMBIL USER LOGIN
+let currentUser =
+localStorage.getItem(
+"currentUser"
+);
+
+// CEK ADA LOGIN
+if(currentUser){
+
+ // TAMBAH KE LIST ONLINE
+ document.getElementById(
+ "onlineMembers"
+ ).innerHTML +=
+ `
+ <div class="online-user">
+
+  <div class="online-avatar">
+  👑
+  </div>
+
+  <div>
+
+   <div class="online-name">
+   ${currentUser}
+   </div>
+
+   <div class="online-role">
+   ONLINE ACCESS
+   </div>
+
+  </div>
+
+  <div class="online-dot"></div>
+
+ </div>
+ `;
+
+}
+
+// MEMBER ONLINE
+function loadOnlineUser(){
+
+ let user =
+ localStorage.getItem(
+ "currentUser"
+ );
+
+ if(!user) return;
+
+ document.getElementById(
+ "onlineMembers"
+ ).innerHTML =
+ `
+ <div class="item">
+
+ 🟢 ${user}<br>
+
+ ONLINE ACCESS
+
+ </div>
+ `;
+
+}
+
+loadOnlineUser();
+ 
 </script>
 
 </body>
