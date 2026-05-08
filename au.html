@@ -850,32 +850,41 @@ function setSender(type){
 
 }
 
-// STATUS
+// STATUS LOOP
 function updateSenderStatus(){
 
- let status=Math.random()>0.5;
+ let box=
+ document.getElementById("senderStatus");
 
- let box=document.getElementById("senderStatus");
+ // ONLINE
+ box.className=
+ "sender-status online";
 
- if(status){
+ box.innerHTML=
+ "🟢 Sender sedang online";
 
-  box.className="sender-status online";
-  box.innerHTML="🟢 Sender aktif";
+ // 1 JAM => OFFLINE
+ setTimeout(()=>{
 
- }
+  box.className=
+  "sender-status offline";
 
- else{
+  box.innerHTML=
+  "🔴 Sender sedang offline";
 
-  box.className="sender-status offline";
-  box.innerHTML="🔴 Sender sedang offline";
-
- }
+ },3600000);
 
 }
 
+// START
 updateSenderStatus();
 
-setInterval(updateSenderStatus,3600000);
+// LOOP TERUS
+setInterval(()=>{
+
+ updateSenderStatus();
+
+},7200000);
 
 // EXECUTE
 function executePanel(){
