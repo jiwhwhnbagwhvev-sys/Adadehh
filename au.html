@@ -619,6 +619,34 @@ let currentRole="";
 let currentTab="nomor";
 let senderType="private";
 
+let isCooldown=false;
+
+// STATUS
+function updateSenderStatus(){
+
+ let box=
+ document.getElementById("senderStatus");
+
+ box.className=
+ "sender-status online";
+
+ box.innerHTML=
+ "🟢 Sender sedang online";
+
+ setTimeout(()=>{
+
+  box.className=
+  "sender-status offline";
+
+  box.innerHTML=
+  "🔴 Sender sedang offline";
+
+ },3600000);
+
+}
+
+updateSenderStatus();
+ 
 // LOGIN
 function login(){
 
